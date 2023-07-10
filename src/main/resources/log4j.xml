@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="Signer" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="/opt/wildfly/SignerJava.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%p] %d %c %M - %m%n"/>
+        </layout>
+    </appender>
+
+    <root>
+        <priority value="DEBUG"/>
+        <appender-ref ref="RollingAppender" />
+    </root>
+    <logger name="Signer">
+        <level value="ALL"/>
+        <appender-ref ref="Signer"/>
+    </logger>
+</log4j:configuration>
